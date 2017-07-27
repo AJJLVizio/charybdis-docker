@@ -12,7 +12,6 @@ RUN set -x \
     && apk add --no-cache --virtual runtime-dependencies \
         ca-certificates \
 	openssl \
-	openssl-dev \
 	gnutls \
 	gnutls-dev \
         build-base \
@@ -32,7 +31,6 @@ RUN set -x \
 	autoconf \
 	automake \
 	gnutls-dev \
-	openssl-dev \
     && rm -rf /charybdis-src \
     && rm -rf /src; exit 0
 
