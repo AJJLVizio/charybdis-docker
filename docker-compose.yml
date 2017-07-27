@@ -1,6 +1,5 @@
 charybdis-irc:
-        #image: 'vanityshed/charybdis-irc:latest'
-  image: 9a6c
+  image: 'vanityshed/charybdis:latest'
   restart: always
 
   ports:
