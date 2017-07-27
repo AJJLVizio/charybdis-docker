@@ -3,22 +3,17 @@ MAINTAINER Stevesbrain
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="stevesbrain version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-ARG CONFIGUREFLAGS="--enable-gnutls --prefix=/irc"
+ARG CONFIGUREFLAGS="--enable-openssl --prefix=/irc"
 
 ENV CHARYBDIS_RELEASE 3.5.5
 
 # Build Charybdis
 RUN set -x \
     && apk add --no-cache --virtual runtime-dependencies \
-        ca-certificates \
 	openssl \
 	openssl-dev \
-	gnutls \
-	gnutls-dev \
         build-base \
         curl \
-	autoconf \
-	automake \
 	bison \
 	flex \
     && mkdir /charybdis-src && cd /charybdis-src \
@@ -29,10 +24,8 @@ RUN set -x \
     && make \
     && make install \
     && apk del --purge build-dependencies \
-	autoconf \
-	automake \
-	gnutls-dev \
 	openssl-dev \
+    && cd /root \
     && rm -rf /charybdis-src \
     && rm -rf /src; exit 0
 
