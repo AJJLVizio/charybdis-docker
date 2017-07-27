@@ -1,0 +1,10 @@
+charybdis-irc:
+        #image: 'vanityshed/charybdis-irc:latest'
+  image: 9a6c
+  restart: always
+
+  ports:
+    - '6667:6667'
+  volumes:
+    - '/opt/dockerdata/charybdis:/irc/etc'
+    - '/etc/localtime:/etc/localtime:ro'
