@@ -1,5 +1,5 @@
 charybdis-irc:
-  image: 'vanityshed/charybdis:latest'
+  image: 'vanityshed/charybdis:openssl-dev'
   restart: always
 
   ports:
