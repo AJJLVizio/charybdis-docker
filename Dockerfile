@@ -12,6 +12,7 @@ RUN set -x \
     && apk add --no-cache --virtual runtime-dependencies \
         ca-certificates \
 	openssl \
+	openssl-dev \
 	gnutls \
 	gnutls-dev \
         build-base \
@@ -31,6 +32,7 @@ RUN set -x \
 	autoconf \
 	automake \
 	gnutls-dev \
+	openssl-dev \
     && rm -rf /charybdis-src \
     && rm -rf /src; exit 0
 
@@ -44,5 +46,5 @@ RUN addgroup -g 1000 -S ircd
 RUN chown -R ircd:ircd /irc
 #The user that we enter the container as, and that everything runs as
 USER ircd
-ENV BUILD 0.1.0
+ENV BUILD 0.2.0
 ENTRYPOINT ["/irc/bin/ircd", "-pidfile", "/irc/ircd.pid", "-foreground"]
