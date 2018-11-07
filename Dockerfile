@@ -1,11 +1,11 @@
-FROM alpine:3.7
+FROM alpine:3.8
 MAINTAINER Stevesbrain
 ARG BUILD_DATE
 ARG VERSION
 LABEL build_version="stevesbrain version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 ARG CONFIGUREFLAGS="--enable-openssl --prefix=/irc"
 
-ENV CHARYBDIS_RELEASE 3.5.5
+ENV CHARYBDIS_RELEASE 3.5.6
 
 # Build Charybdis
 RUN set -x \
@@ -39,5 +39,5 @@ RUN addgroup -g 1000 -S ircd
 RUN chown -R ircd:ircd /irc
 #The user that we enter the container as, and that everything runs as
 USER ircd
-ENV BUILD 0.2.0
+ENV BUILD 0.2.1
 ENTRYPOINT ["/irc/bin/ircd", "-pidfile", "/irc/ircd.pid", "-foreground"]
